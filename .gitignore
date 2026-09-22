@@ -1,11 +1,7 @@
+node_modules/
+dist/
+.__mf__temp/
+.pnpm-store/
 .idea/
-package-lock.json
-APP_ID.csr
-emlviewer.key
-vendor
-*.tar.gz
-node_modules
-tmp/*
-js/
-build.log
-build.js
+.vscode/
+*.log

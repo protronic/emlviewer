@@ -1,0 +1,78 @@
+Return-Path: <alice@example.com>
+Delivered-To: bob@example.org
+Message-ID: <sample-1@example.com>
+Date: Tue, 15 Sep 2026 10:30:00 +0200
+From: "Alice Example" <alice@example.com>
+To: Bob Example <bob@example.org>
+Cc: carol@example.net
+Reply-To: replies@example.com
+Subject: =?UTF-8?Q?Testnachricht_f=C3=BCr_den_Viewer?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="mixed-boundary"
+
+--mixed-boundary
+Content-Type: multipart/alternative; boundary="alt-boundary"
+
+--alt-boundary
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Bob,
+
+this is the plain text part with an umlaut: Gr=C3=BC=C3=9Fe.
+See https://example.com/docs for details.
+
+-- Alice
+
+--alt-boundary
+Content-Type: multipart/related; boundary="related-boundary"
+
+--related-boundary
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><style>.brand { color: #b5473c; } .hero { background: url(http=
+s://cdn.example.com/hero.jpg); }</style></head>
+<body style=3D"font-family: Arial">
+<script>alert('xss')</script>
+<p class=3D"brand" onclick=3D"alert(1)">Hello from the <b>HTML part</b> wit=
+h an umlaut: Gr=C3=BC=C3=9Fe.</p>
+<p><img src=3D"cid:logo@example" alt=3D"logo" width=3D"1" height=3D"1"></p>
+<p><img src=3D"https://tracker.example.com/pixel.gif" alt=3D"tracker"></p>
+<p><a href=3D"https://example.com/docs">Documentation</a></p>
+<iframe src=3D"https://evil.example.com"></iframe>
+</body></html>
+
+--related-boundary
+Content-Type: image/png; name="logo.png"
+Content-Transfer-Encoding: base64
+Content-ID: <logo@example>
+Content-Disposition: inline; filename="logo.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6
+kgAAAABJRU5ErkJggg==
+
+--related-boundary--
+
+--alt-boundary--
+
+--mixed-boundary
+Content-Type: text/plain; charset="utf-8"; name="report.txt"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="report.txt"
+
+UmVwb3J0IGxpbmUgMQpSZXBvcnQgbGluZSAyCg==
+
+--mixed-boundary
+Content-Type: message/rfc822; name="forwarded.eml"
+Content-Disposition: attachment; filename="forwarded.eml"
+
+From: dave@example.com
+To: alice@example.com
+Subject: Forwarded original
+Date: Mon, 14 Sep 2026 09:00:00 +0200
+Content-Type: text/plain; charset="utf-8"
+
+This is the forwarded message body.
+
+--mixed-boundary--

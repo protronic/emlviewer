@@ -1,9 +1,0 @@
-{
-  "platform": {
-    "php": "8.1"
-  },
-  "sort-packages": true,
-  "require-dev": {
-    "phpunit/phpunit": "*"
-  }
-}

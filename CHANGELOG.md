@@ -1,3 +1,13 @@
+## 3.0.0 – 2026-09-22
+- Rewritten as an OpenCloud web extension (Module Federation, `@opencloud-eu/extension-sdk` 7.1.2)
+- The Nextcloud PHP app (server-side parsing, mPDF export) is replaced by a fully client-side viewer:
+  postal-mime parsing, DOMPurify sanitisation, sandboxed `srcdoc` preview
+- `cid:` images are inlined; remote content is blocked by default with an opt-in toggle
+- Attachments can be downloaded or saved next to the `.eml` in OpenCloud
+- Print / PDF export via the printer-friendly document and the browser print dialog
+- English and German UI, about dialog with build information
+- Unit tests (vitest) and a Playwright browser harness
+
 ## 2.1.0 – 2026-09-10
 - Restrict this release line to NC33 only
 - Upgrade to support NC33
